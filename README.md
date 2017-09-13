@@ -18,14 +18,18 @@ To test the application please run the following CURLs.
 curl -X POST \
   http://articlemanagement.dev/api/users/login \
   -H 'cache-control: no-cache' \
-  -H 'content-type: application/x-www-form-urlencoded' \
+  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+  -F username={username} \
+  -F password={password}
   
 #####UserRegistration
   
-  curl -X POST \
-    http://articlemanagement.dev/api/users/register \
-    -H 'cache-control: no-cache' \
-    -H 'content-type: application/x-www-form-urlencoded' \
+curl -X POST \
+  http://articlemanagement.dev/api/users/register \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+  -F username={username} \
+  -F password={password}
 
 #####Get all articles of the logged in user
 curl -X GET \
@@ -38,28 +42,32 @@ curl -X GET \
   -H 'cache-control: no-cache' \
 
 #####Create article
-curl -X POST \
-  http://articlemanagement.dev/api/articles/ \
-  -H 'cache-control: no-cache' \
-  -H 'content-type: application/x-www-form-urlencoded' \
+ccurl -X POST \
+   http://articlemanagement.dev/api/articles \
+   -H 'cache-control: no-cache' \
+   -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+   -F 'title={title}' \
+   -F 'content={content}'
 
 #####Update article
 curl -X PUT \
   http://articlemanagement.dev/api/articles/{article_id} \
   -H 'cache-control: no-cache' \
   -H 'content-type: application/x-www-form-urlencoded' \
+  -d 'title={title}&content={content}'
 
 #####Delete article
- curl -X DELETE \
-   http://articlemanagement.dev/api/articles/{article_id} \
-   -H 'cache-control: no-cache' \
-   -H 'content-type: application/x-www-form-urlencoded' \
+curl -X DELETE \
+  http://articlemanagement.dev/api/articles/{article_id} \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/x-www-form-urlencoded' \
 
 #####Create user info
 curl -X POST \
   http://articlemanagement.dev/api/users/info \
   -H 'cache-control: no-cache' \
   -H 'content-type: application/x-www-form-urlencoded' \
+  -d 'name={name}&surname={surname}'
 
 #####Update user info
 
@@ -67,6 +75,7 @@ curl -X PUT \
   http://articlemanagement.dev/api/users/info \
   -H 'cache-control: no-cache' \
   -H 'content-type: application/x-www-form-urlencoded' \
+  -d 'name={name}&surname={surname}'\
  
 
 

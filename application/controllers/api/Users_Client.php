@@ -1,14 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Users_Client extends CI_Controller {
-
-
-    public static function login($data) {
+class Users_Client extends CI_Controller
+{
+    public static function login($data)
+    {
         $curl = curl_init();
         $username = !empty($data) ? $data['username'] : null;
         $password = !empty($data) ? $data['password'] : null;
-
         curl_setopt_array($curl, array(
             CURLOPT_URL => "http://articlemanagement.dev/api/users/login",
             CURLOPT_RETURNTRANSFER => true,
@@ -17,9 +16,8 @@ class Users_Client extends CI_Controller {
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => "username=".$username."&password=".$password,
+            CURLOPT_POSTFIELDS => "username=" . $username . "&password=" . $password,
         ));
-
         $response = curl_exec($curl);
         $err = curl_error($curl);
 
@@ -32,7 +30,8 @@ class Users_Client extends CI_Controller {
         }
     }
 
-    public static function register($data) {
+    public static function register($data)
+    {
         $curl = curl_init();
         $username = !empty($data) ? $data['username'] : null;
         $password = !empty($data) ? $data['password'] : null;
@@ -44,7 +43,7 @@ class Users_Client extends CI_Controller {
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => "username=".$username."&password=".$password,
+            CURLOPT_POSTFIELDS => "username=" . $username . "&password=" . $password,
         ));
 
         $response = curl_exec($curl);

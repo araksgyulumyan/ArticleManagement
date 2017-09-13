@@ -35,9 +35,7 @@ class Users extends REST_Controller
                 'message' => 'Invalid user id'
             ], REST_Controller::HTTP_BAD_REQUEST);
         }
-
         $user = $this->user->get_one($id);
-
         if ($user) {
             $this->response([
                 'id' => $user->id,
