@@ -1,3 +1,6 @@
+#ArticleManagement 2nd phase test task with CodeIgniter (2017 year)
+
+
 ####Database config
 
 Database name in config file is "articlemanagement".
